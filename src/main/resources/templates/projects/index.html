@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Projekty</title>
+</head>
+<body>
+<h1>
+  Projekty
+</h1>
+
+<div>
+  <span> SPAN1</span>
+  <span th:text="${test}"></span>
+
+</div>
+
+<div>
+  <tr th:each="${students}">
+    <td th:text="${student.id}"/>
+    <td th:text="${student.name}"/>
+
+  </tr>
+
+  <table>
+    <head>
+      <tr>
+        <td>
+          Kod
+        </td>
+        <td>
+          Nazwa
+        </td>
+      </tr>
+
+    </head>
+
+    <body>
+    <tr th:each="project:${projects}">
+      <td th:text="${project.code}"/>
+      <td th:text="${project.name}"/>
+
+
+    </tr>
+
+
+
+
+    </body>
+
+  </table>
+</div>
+</body>
+</html>
