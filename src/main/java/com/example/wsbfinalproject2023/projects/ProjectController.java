@@ -2,8 +2,10 @@ package com.example.wsbfinalproject2023.projects;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
 
 @Controller
 @RequestMapping ("/projects")
@@ -17,7 +19,19 @@ public class ProjectController {
 
     }
 
+
+    @Controller
+    @RequestMapping("/")
+    public static class IndexController{
+        @GetMapping("/")
+        String index() {
+            return "projects/index";
+        }
+    }
+
     // TODO: @Secured(ROLE_PROJECTS_TAB)
+
+
 
     @GetMapping
     ModelAndView index(){
@@ -25,10 +39,22 @@ public class ProjectController {
 
         modelAndView.addObject("test", "TEST ZMIENNEJ");
         modelAndView.addObject("projects", projectRepository.findAll());
+        modelAndView.addObject("students", projectRepository.findAll());
 
         return modelAndView;
 
     }
+  
+    @GetMapping ("/create")
+    ModelAndView create() {
+        ModelAndView modelAndView = new ModelAndView("project/create");
+        return modelAndView;
 
+    }
 
-}
+    @PostMapping  ("/save")
+    ModelAndView save() {
+        ModelAndView modelAndView = new ModelAndView("project/create");
+        return modelAndView;
+
+}}

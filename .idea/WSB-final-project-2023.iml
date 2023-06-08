@@ -18,6 +18,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
+          <factory-entry name="WSB-final-project-2023" value="43ea5ead-7590-400e-b1e0-a13981013f17" />
           <factory-entry name="entityManagerFactory" value="f75b2aad-137d-4740-85a0-621206a06c1a" />
         </datasource-mapping>
         <naming-strategy-map />
@@ -126,5 +127,10 @@
     <orderEntry type="library" name="Maven: io.micrometer:micrometer-commons:1.10.3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-webmvc:6.0.4" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-expression:6.0.4" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-thymeleaf:3.0.2" level="project" />
+    <orderEntry type="library" name="Maven: org.thymeleaf:thymeleaf-spring6:3.1.1.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.thymeleaf:thymeleaf:3.1.1.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.attoparser:attoparser:2.0.6.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.unbescape:unbescape:1.1.6.RELEASE" level="project" />
   </component>
 </module>
