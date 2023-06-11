@@ -5,15 +5,22 @@
   <title>Project</title>
 </head>
 <body>
-<h1>
-  Projekty
-</h1>
+
+
+<div class="container"></div>
+
+  <h1>
+    Nowy Projekt
+  </h1>
 
 <div>
+  <a th:href="@{/projects/create}" class="btn btn-secondary">NOWY PROJEKT</a>
+  </div>
+
+
   <span> SPAN1</span>
   <span th:text="${test}"></span>
 
-</div>
 
 <div>
   
@@ -43,6 +50,9 @@
     </body>
 
   </table>
+
+  <div th:replace="/fragments/footer.html :: footer"></div>
+
 </div>
 </body>
 </html>
