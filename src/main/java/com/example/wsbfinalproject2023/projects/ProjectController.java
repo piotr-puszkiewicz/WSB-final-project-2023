@@ -1,10 +1,7 @@
 package com.example.wsbfinalproject2023.projects;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -15,7 +12,7 @@ public class ProjectController {
 
     private final ProjectRepository projectRepository;
 
-    public ProjectController (ProjectRepository projectRepository){
+    public ProjectController(ProjectRepository projectRepository) {
         this.projectRepository = projectRepository;
 
     }
@@ -23,7 +20,7 @@ public class ProjectController {
 
     @Controller
     @RequestMapping("/")
-    public static class IndexController{
+    public static class IndexController {
         @GetMapping("/")
         String index() {
             return "projects/index";
@@ -33,9 +30,8 @@ public class ProjectController {
     // TODO: @Secured(ROLE_PROJECTS_TAB)
 
 
-
     @GetMapping
-    ModelAndView index(){
+    ModelAndView index() {
         ModelAndView modelAndView = new ModelAndView("projects/index");
 
         modelAndView.addObject("test", "TEST ZMIENNEJ");
@@ -45,8 +41,8 @@ public class ProjectController {
         return modelAndView;
 
     }
-  
-    @GetMapping ("/create")
+
+    @GetMapping("/create")
     ModelAndView create() {
         ModelAndView modelAndView = new ModelAndView("projects/create");
 
@@ -56,12 +52,26 @@ public class ProjectController {
 
     }
 
-    @PostMapping  ("/save")
+    @GetMapping("/edit/{id}")
+    ModelAndView edit(@PathVariable Long id) {
+        ModelAndView modelAndView = new ModelAndView("projects/create");
+
+        Project project = projectRepository.findById(id).orElse(null);
+        modelAndView.addObject("project", project);
+        return modelAndView;
+    }
+
+    @PostMapping("/save")
     String save(@ModelAttribute Project project) {
+        boolean isNew = project.getId() == null;
 
         projectRepository.save(project);
 
-        return  "redirect:/projects";
+        if (isNew) {
+            return "redirect:/projects";
+        } else {
+           return "redirect:/projects/edit/" + project.getId();
+        }
     }
 
 }
