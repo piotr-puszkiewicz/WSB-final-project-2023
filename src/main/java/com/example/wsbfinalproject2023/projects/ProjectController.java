@@ -67,17 +67,12 @@ public class ProjectController {
 
         projectRepository.save(project);
 
-        return "redirect:/projects";
-
+        if (isNew) {
+            return "redirect:/projects";
+        } else {
+           return "redirect:/projects/edit/" + project.getId();
+        }
     }
-
-    @GetMapping("/delete/{id}")
-    String delete(@PathVariable Long id) {
-        projectRepository.deleteById(id);
-        return "redirect:/projects";
-    }
-
 
 }
-
 
