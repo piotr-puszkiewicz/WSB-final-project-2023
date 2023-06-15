@@ -63,16 +63,18 @@ public class ProjectController {
 
     @PostMapping("/save")
     String save(@ModelAttribute Project project) {
-        boolean isNew = project.getId() == null;
 
         projectRepository.save(project);
 
-        if (isNew) {
-            return "redirect:/projects";
-        } else {
-           return "redirect:/projects/edit/" + project.getId();
-        }
+        return "redirect:/projects";
+
     }
 
+
+    @GetMapping("/delete/{id}")
+    String delete(@PathVariable Long id) {
+        projectRepository.deleteById(id);
+        return "redirect:/projects";
+    }
 }
 
