@@ -2,6 +2,8 @@ package com.example.wsbfinalproject2023.issues;
 
 import com.example.wsbfinalproject2023.projects.Project;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data
@@ -13,7 +15,11 @@ public class Issue {
     private Project project;
 
 
+    @Size(min = 3)
     private String code;
+
+    @NotNull
+    @Size(min = 5)
     private String title;
     private String content;
 

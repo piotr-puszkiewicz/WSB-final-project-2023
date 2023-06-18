@@ -1,7 +1,9 @@
 package com.example.wsbfinalproject2023.issues;
 
 import com.example.wsbfinalproject2023.projects.ProjectRepository;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +20,16 @@ public class IssueController {
     public IssueController(ProjectRepository projectRepository, IssueRepository issueRepository) {
         this.projectRepository = projectRepository;
         this.issueRepository = issueRepository;
+
+    }
+
+    @GetMapping
+    ModelAndView index() {
+        ModelAndView modelAndView = new ModelAndView("issues/index");
+
+        modelAndView.addObject("issue", issueRepository.findAll());
+
+        return modelAndView;
     }
 
     @GetMapping("/create")
@@ -32,12 +44,22 @@ public class IssueController {
     }
 
     @PostMapping("/save")
-    String save(@ModelAttribute Issue issue) {
+    ModelAndView save(@ModelAttribute @Valid Issue issue, BindingResult bindingResult) {
+
+        ModelAndView modelAndView = new ModelAndView("issues/create");
+
+        if (bindingResult.hasErrors()) {
+            modelAndView.addObject("issue", issue);
+            modelAndView.addObject("projects", projectRepository.findAll());
+
+            return modelAndView;
+
+        }
 
         issueRepository.save(issue);
 
-        return "redirect:/projects";
+        modelAndView.setViewName("redirect:/projects");
+        return modelAndView;
     }
-
 
 }

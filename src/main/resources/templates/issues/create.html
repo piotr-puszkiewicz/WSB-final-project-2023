@@ -48,6 +48,7 @@
             <div class="col-8">
                 <input type="text" class="form-control" id="issue-title" th:field="*{title}">
             </div>
+            <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="text-danger"></span>
         </div>
 
         <div class="mb-3">
@@ -57,6 +58,8 @@
 
             <input type="text" class="form-control" id="issue-code" th:field="*{code}">
         </div>
+
+        <span th:if="${#fields.hasErrors('code')}" th:errors="*{code}" class="text-danger"></span>
 
         <div class="mb-3">
             <label for="demo" class="form-label">
