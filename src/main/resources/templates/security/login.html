@@ -41,6 +41,11 @@
               class="btn btn-primary"
               th:text="#{login.label}"
       ></button>
+
+      <div th:if="${param.error}" class="alert alert-danger">
+        <span th:text="#{login.error}">
+        </span></div>
+
     </div>
   </form>
 </div>
