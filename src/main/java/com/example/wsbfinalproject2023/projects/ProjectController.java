@@ -18,14 +18,14 @@ public class ProjectController {
     }
 
 
-    @Controller
-    @RequestMapping("/")
-    public static class IndexController {
-        @GetMapping("/")
-        String index() {
-            return "projects/index";
-        }
-    }
+//    @Controller
+//    @RequestMapping("/")
+//    public static class IndexController {
+//        @GetMapping("/")
+//        String index() {
+//            return "projects/index";
+//        }
+//    }
 
     // TODO: @Secured(ROLE_PROJECTS_TAB)
 
