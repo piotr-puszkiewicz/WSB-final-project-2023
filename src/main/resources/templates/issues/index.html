@@ -42,7 +42,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="issue: ${issues}">
+        <tr th:each="issue: ${issue}">
             <td th:text="${issue.code}"/>
             <td th:text="${issue.project.code}"></td>
             <td th:text="${issue.title}"/>

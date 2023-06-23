@@ -6,10 +6,11 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
+
 @Data
 @Entity
 public class Issue {
-
+    @NotNull
     @ManyToOne (optional = false)
     @JoinColumn(name = "project_id", nullable = false)
     private Project project;
